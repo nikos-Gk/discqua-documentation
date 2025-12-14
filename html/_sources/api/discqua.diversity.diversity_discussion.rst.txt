@@ -1,0 +1,13 @@
+discqua.diversity.diversity\_discussion
+=======================================
+
+.. automodule:: discqua.diversity.diversity_discussion
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calculate_discussion_diversity_score
+      diversity_disc
+   

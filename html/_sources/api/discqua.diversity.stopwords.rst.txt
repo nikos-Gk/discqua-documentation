@@ -1,0 +1,6 @@
+discqua.diversity.stopwords
+===========================
+
+.. automodule:: discqua.diversity.stopwords
+
+   

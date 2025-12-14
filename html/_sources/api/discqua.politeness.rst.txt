@@ -1,0 +1,6 @@
+discqua.politeness
+==================
+
+.. currentmodule:: discqua
+
+.. autofunction:: politeness

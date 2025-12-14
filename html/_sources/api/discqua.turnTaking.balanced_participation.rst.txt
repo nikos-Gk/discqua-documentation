@@ -1,0 +1,13 @@
+discqua.turnTaking.balanced\_participation
+==========================================
+
+.. automodule:: discqua.turnTaking.balanced_participation
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      compute_balance
+      participation
+   

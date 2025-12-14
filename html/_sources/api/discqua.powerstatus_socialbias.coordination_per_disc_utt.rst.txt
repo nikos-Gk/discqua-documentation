@@ -1,0 +1,12 @@
+discqua.powerstatus\_socialbias.coordination\_per\_disc\_utt
+============================================================
+
+.. automodule:: discqua.powerstatus_socialbias.coordination_per_disc_utt
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      coordination
+   

@@ -1,0 +1,31 @@
+﻿discqua
+=======
+
+.. automodule:: discqua
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   argQualityAspects
+   argQualityOverall
+   coherence
+   collaboration
+   controversy
+   dialogue_acts
+   dispute_tactics
+   diversity
+   empathy
+   engagement
+   informativeness
+   persuasiveness
+   politeness
+   powerstatus_socialbias
+   readability
+   sentiment_analysis
+   toxicity
+   turnTaking
+   utils

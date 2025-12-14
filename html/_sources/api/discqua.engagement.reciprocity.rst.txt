@@ -1,0 +1,6 @@
+discqua.engagement.reciprocity
+==============================
+
+.. currentmodule:: discqua.engagement
+
+.. autofunction:: reciprocity

@@ -1,0 +1,14 @@
+discqua.persuasiveness
+======================
+
+.. automodule:: discqua.persuasiveness
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   persuasion_strategies
+   persuasiveness

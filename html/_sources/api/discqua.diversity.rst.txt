@@ -1,0 +1,16 @@
+discqua.diversity
+=================
+
+.. automodule:: discqua.diversity
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   diversity_discussion
+   diversity_response
+   ngram_diversity
+   stopwords

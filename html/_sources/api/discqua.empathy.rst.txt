@@ -1,0 +1,6 @@
+discqua.empathy
+===============
+
+.. currentmodule:: discqua
+
+.. autofunction:: empathy

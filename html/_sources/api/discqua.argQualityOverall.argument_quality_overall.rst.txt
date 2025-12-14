@@ -1,0 +1,12 @@
+discqua.argQualityOverall.argument\_quality\_overall
+====================================================
+
+.. automodule:: discqua.argQualityOverall.argument_quality_overall
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      OAQuality
+   

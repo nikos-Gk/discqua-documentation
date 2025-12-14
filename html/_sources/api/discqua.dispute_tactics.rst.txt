@@ -1,0 +1,6 @@
+discqua.dispute\_tactics
+========================
+
+.. currentmodule:: discqua
+
+.. autofunction:: dispute_tactics

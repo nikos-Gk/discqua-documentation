@@ -1,0 +1,14 @@
+discqua.coherence.coherenceEcoh
+===============================
+
+.. automodule:: discqua.coherence.coherenceEcoh
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      coherence_ecoh
+      inferenceModel
+      processDiscussion
+   

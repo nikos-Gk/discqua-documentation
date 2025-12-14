@@ -1,0 +1,6 @@
+discqua.coherence.coherence\_response
+=====================================
+
+.. currentmodule:: discqua.coherence
+
+.. autofunction:: coherence_response

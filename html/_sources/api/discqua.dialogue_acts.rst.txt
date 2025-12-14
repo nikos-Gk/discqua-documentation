@@ -1,0 +1,6 @@
+discqua.dialogue\_acts
+======================
+
+.. currentmodule:: discqua
+
+.. autofunction:: dialogue_acts

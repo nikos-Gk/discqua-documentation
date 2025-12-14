@@ -1,0 +1,13 @@
+discqua.informativeness.informativeness\_discussion
+===================================================
+
+.. automodule:: discqua.informativeness.informativeness_discussion
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calculate_discussion_informativeness_score
+      informativeness_disc
+   

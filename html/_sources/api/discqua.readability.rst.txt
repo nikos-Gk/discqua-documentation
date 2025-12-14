@@ -1,0 +1,6 @@
+discqua.readability
+===================
+
+.. currentmodule:: discqua
+
+.. autofunction:: readability

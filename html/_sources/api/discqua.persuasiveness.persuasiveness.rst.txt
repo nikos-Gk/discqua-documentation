@@ -1,0 +1,13 @@
+discqua.persuasiveness.persuasiveness
+=====================================
+
+.. automodule:: discqua.persuasiveness.persuasiveness
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calculate_discussion_persuasiveness_score
+      persuasiveness_disc
+   

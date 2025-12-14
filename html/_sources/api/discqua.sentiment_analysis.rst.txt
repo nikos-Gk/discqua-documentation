@@ -1,0 +1,13 @@
+discqua.sentiment\_analysis
+===========================
+
+.. automodule:: discqua.sentiment_analysis
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   sentiment_analysis

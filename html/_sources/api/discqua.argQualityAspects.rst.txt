@@ -1,0 +1,14 @@
+discqua.argQualityAspects
+=========================
+
+.. automodule:: discqua.argQualityAspects
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   arg_qual_dimensions
+   arg_quality_aspects

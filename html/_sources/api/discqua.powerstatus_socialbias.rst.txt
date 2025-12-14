@@ -1,0 +1,14 @@
+discqua.powerstatus\_socialbias
+===============================
+
+.. automodule:: discqua.powerstatus_socialbias
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   coordination_per_disc_utt
+   social_bias

@@ -1,0 +1,6 @@
+discqua.collaboration
+=====================
+
+.. currentmodule:: discqua
+
+.. autofunction:: collaboration

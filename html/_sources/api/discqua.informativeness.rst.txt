@@ -1,0 +1,14 @@
+discqua.informativeness
+=======================
+
+.. automodule:: discqua.informativeness
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   informativeness_discussion
+   informativeness_response

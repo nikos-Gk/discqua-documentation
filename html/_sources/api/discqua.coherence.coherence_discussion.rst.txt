@@ -1,0 +1,13 @@
+discqua.coherence.coherence\_discussion
+=======================================
+
+.. automodule:: discqua.coherence.coherence_discussion
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calculate_discussion_coherence_score
+      coherence_disc
+   

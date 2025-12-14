@@ -1,0 +1,14 @@
+discqua.argQualityOverall
+=========================
+
+.. automodule:: discqua.argQualityOverall
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   argument_quality_overall
+   overall_argument_quality

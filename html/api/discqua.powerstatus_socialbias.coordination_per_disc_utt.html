@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>discqua.powerstatus_socialbias.coordination_per_disc_utt &mdash; DiscQuA  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="discqua.powerstatus_socialbias.social_bias" href="discqua.powerstatus_socialbias.social_bias.html" />
+    <link rel="prev" title="discqua.powerstatus_socialbias" href="discqua.powerstatus_socialbias.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            DiscQuA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">DiscQuA: Discussion Quality Aspects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#saving">Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#logging">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#description-of-input-parameters">Description of input parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#argument-quality">Argument Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#coherence">Coherence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#controversy">Controversy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#dialogue-acts">Dialogue Acts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#dispute-tactics">Dispute Tactics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#diversity">Diversity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#empathy">Empathy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#engagement">Engagement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#informativeness">Informativeness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#persuasiveness">Persuasiveness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#politeness">Politeness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#power-status-and-social-bias">Power, Status and Social Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#language-features">Language Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#sentiment">Sentiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#toxicity">Toxicity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#turn-taking">Turn Taking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html#references">References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="discqua.html">discqua</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="discqua.argQualityAspects.html">discqua.argQualityAspects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.argQualityOverall.html">discqua.argQualityOverall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.coherence.html">discqua.coherence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.collaboration.html">discqua.collaboration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.controversy.html">discqua.controversy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.dialogue_acts.html">discqua.dialogue_acts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.dispute_tactics.html">discqua.dispute_tactics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.diversity.html">discqua.diversity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.empathy.html">discqua.empathy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.engagement.html">discqua.engagement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.informativeness.html">discqua.informativeness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.persuasiveness.html">discqua.persuasiveness</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.politeness.html">discqua.politeness</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="discqua.powerstatus_socialbias.html">discqua.powerstatus_socialbias</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">discqua.powerstatus_socialbias.coordination_per_disc_utt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="discqua.powerstatus_socialbias.social_bias.html">discqua.powerstatus_socialbias.social_bias</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.readability.html">discqua.readability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.sentiment_analysis.html">discqua.sentiment_analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.toxicity.html">discqua.toxicity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.turnTaking.html">discqua.turnTaking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discqua.utils.html">discqua.utils</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">DiscQuA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="discqua.html">discqua</a></li>
+          <li class="breadcrumb-item"><a href="discqua.powerstatus_socialbias.html">discqua.powerstatus_socialbias</a></li>
+      <li class="breadcrumb-item active">discqua.powerstatus_socialbias.coordination_per_disc_utt</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/discqua.powerstatus_socialbias.coordination_per_disc_utt.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="discqua-powerstatus-socialbias-coordination-per-disc-utt">
+<h1>discqua.powerstatus_socialbias.coordination_per_disc_utt<a class="headerlink" href="#discqua-powerstatus-socialbias-coordination-per-disc-utt" title="Link to this heading"></a></h1>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">coordination</span></code>(message_list, speakers_list, ...)</p></td>
+<td><p>Computes linguistic coordination metrics either at the discussion level or at the utterance level for a given sequence of messages.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">discqua.powerstatus_socialbias.coordination_per_disc_utt.</span></span><span class="sig-name descname"><span class="pre">coordination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speakers_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msgsid_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replyto_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discussion_level</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Computes linguistic coordination metrics either at the discussion level or at the utterance level
+for a given sequence of messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>message_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The list of utterances in the discussion.</p></li>
+<li><p><strong>speakers_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – The corresponding list of speakers for each utterance.</p></li>
+<li><p><strong>msgsid_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of messages ids corresponding to each utterance.</p></li>
+<li><p><strong>replyto_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List indicating the message ID each utterance is replying to.</p></li>
+<li><p><strong>disc_id</strong> (<em>str</em>) – Unique identifier for the discussion.</p></li>
+<li><p><strong>discussion_level</strong> (<em>bool</em>) – A boolean flag; if True, calculates coordination metrics over the full discussion; otherwise if False, incrementally per utterance.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A dictionary containing coordination metrics for either the entire discussion or</dt><dd><p>for each incremental utterance window. Metrics include:
+-‘coord_allspeakers_2_user’: Coordination from all speakers toward each user.
+-‘coord_user_2_allspeaker’: Coordination from each user toward all other speakers.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="discqua.powerstatus_socialbias.html" class="btn btn-neutral float-left" title="discqua.powerstatus_socialbias" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="discqua.powerstatus_socialbias.social_bias.html" class="btn btn-neutral float-right" title="discqua.powerstatus_socialbias.social_bias" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Nikos Gkoumas.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

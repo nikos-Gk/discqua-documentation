@@ -1,0 +1,13 @@
+discqua.sentiment\_analysis.sentiment\_analysis
+===============================================
+
+.. automodule:: discqua.sentiment_analysis.sentiment_analysis
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calculate_sentiment_labels
+      sentiment
+   

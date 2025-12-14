@@ -1,0 +1,12 @@
+discqua.argQualityAspects.arg\_quality\_aspects
+===============================================
+
+.. automodule:: discqua.argQualityAspects.arg_quality_aspects
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      arg_dimensions
+   

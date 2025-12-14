@@ -1,0 +1,6 @@
+discqua.informativeness.informativeness\_response
+=================================================
+
+.. currentmodule:: discqua.informativeness
+
+.. autofunction:: informativeness_response

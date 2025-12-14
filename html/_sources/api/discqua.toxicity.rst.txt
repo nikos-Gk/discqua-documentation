@@ -1,0 +1,6 @@
+discqua.toxicity
+================
+
+.. currentmodule:: discqua
+
+.. autofunction:: toxicity

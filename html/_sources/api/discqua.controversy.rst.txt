@@ -1,0 +1,6 @@
+discqua.controversy
+===================
+
+.. currentmodule:: discqua
+
+.. autofunction:: controversy

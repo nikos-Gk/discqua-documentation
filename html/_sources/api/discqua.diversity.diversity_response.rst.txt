@@ -1,0 +1,6 @@
+discqua.diversity.diversity\_response
+=====================================
+
+.. currentmodule:: discqua.diversity
+
+.. autofunction:: diversity_response

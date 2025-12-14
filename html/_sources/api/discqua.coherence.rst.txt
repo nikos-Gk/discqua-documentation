@@ -1,0 +1,15 @@
+discqua.coherence
+=================
+
+.. automodule:: discqua.coherence
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   coherenceEcoh
+   coherence_discussion
+   coherence_response

@@ -1,0 +1,13 @@
+discqua.engagement.engagement\_discussion
+=========================================
+
+.. automodule:: discqua.engagement.engagement_discussion
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      calculate_discussion_engagement_score
+      engagement_disc
+   

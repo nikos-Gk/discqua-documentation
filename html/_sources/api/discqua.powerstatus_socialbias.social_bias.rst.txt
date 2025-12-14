@@ -1,0 +1,6 @@
+discqua.powerstatus\_socialbias.social\_bias
+============================================
+
+.. currentmodule:: discqua.powerstatus_socialbias
+
+.. autofunction:: social_bias

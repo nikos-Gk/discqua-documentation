@@ -1,0 +1,1394 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DiscQuA: Discussion Quality Aspects &mdash; DiscQuA  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="DiscQuA documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            DiscQuA
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DiscQuA: Discussion Quality Aspects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#option-1-install-from-pypi">Option 1: Install from PyPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#option-2-install-from-source-development-mode">Option 2: Install from Source (Development Mode)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#saving">Saving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#description-of-input-parameters">Description of input parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#argument-quality">Argument Quality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arg-dimensions-argument-quality-aspects-turn-level">arg_dimensions: Argument Quality Aspects (Turn-Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logic-dimensions">Logic Dimensions:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rhetoric-dimensions">Rhetoric Dimensions:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dialectic-dimensions">Dialectic Dimensions:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overall-quality">Overall Quality:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overall-arg-quality-overall-argument-quality-discussion-level">overall_arg_quality: Overall Argument Quality (Discussion-Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scoring-modes">Scoring Modes:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#coherence">Coherence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#coherence-disc-coherence-analysis-discussion-level">coherence_disc: Coherence Analysis (Discussion-Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coherence-response-coherence-analysis-turn-level">coherence_response: Coherence Analysis (Turn-Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coherence-ecoh-coherence-analysis-turn-level">coherence_ecoh: Coherence Analysis (Turn-Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#controversy">Controversy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#controversy-controversy-analysis-discussion-and-turn-level">controversy: Controversy Analysis (Discussion and Turn Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#outputs">Outputs:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#dialogue-acts">Dialogue Acts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dialogue-acts-dialogue-acts-analysis-turn-level">dialogue_acts: Dialogue Acts Analysis (Turn-Level).</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dialogue-act-labels">Dialogue Act Labels:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#dispute-tactics">Dispute Tactics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dispute-tactics-disagreement-levels-and-coordination-labels-analysis-turn-level">dispute_tactics: Disagreement Levels and Coordination Labels Analysis (Turn-Level).</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#disagreement-levels">Disagreement levels:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coordination-labels-attempts-to-promote-understanding-and-consensus">Coordination labels (attempts to promote understanding and consensus):</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#diversity">Diversity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#diversity-disc-diversity-analysis-discussion-level">diversity_disc: Diversity Analysis (Discussion-Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diversity-response-diversity-analysis-turn-level">diversity_response: Diversity Analysis (Turn-Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ngramdiversity-ngram-diversity-based-on-word-overlap-turn-level">ngramdiversity: Ngram diversity based on word overlap (Turn-level).</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#labels-let-utt-i-and-utt-i-1-two-consecutive-utterances-in-the-discussion">Labels: Let utt_i, and utt_i+1 two consecutive utterances in the discussion.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#empathy">Empathy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#empathy-empathy-analysis-turnlevel">empathy: Empathy Analysis (Turn–Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#labels">Labels:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#engagement">Engagement</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#engagement-disc-engagement-analysis-discussionlevel">engagement_disc: Engagement Analysis (Discussion–Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#engagement-response-engagement-analysis-turnlevel">engagement_response: Engagement Analysis (Turn–Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reciprocity-reciprocity-motifs-serve-as-proxies-for-engagement-discussion-and-turn-level">reciprocity: Reciprocity Motifs: Serve as proxies for engagement (Discussion and Turn Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#informativeness">Informativeness</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#informativeness-disc-informativeness-analysis-discussion-level">informativeness_disc: Informativeness Analysis (Discussion-Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#informativeness-response-informativeness-analysis-turn-level">informativeness_response: Informativeness Analysis (Turn-Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#persuasiveness">Persuasiveness</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#persuasiveness-disc-persuasiveness-analysis-discussion-level">persuasiveness_disc: Persuasiveness Analysis (Discussion-Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#persuasion-strategy-persuasiveness-analysis-turn-level">persuasion_strategy: Persuasiveness Analysis (Turn-Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Labels:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#politeness">Politeness</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#politeness-ngrams-politeness-markers-discussion-and-turn-level">politeness_ngrams: Politeness markers (Discussion and Turn Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Labels:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#politeness-politeness-analysis-turn-level">politeness: Politeness Analysis (Turn-Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#power-status-and-social-bias">Power, Status and Social Bias</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#social-bias-social-bias-analysis-turn-level">social_bias: Social Bias Analysis (Turn-Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Labels:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#coordination-linguistic-style-coordination-discussion-and-turn-level">coordination: Linguistic Style Coordination (Discussion and Turn Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Labels:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#language-features">Language Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collaboration-collaboration-markers-discussion-and-turn-level">collaboration: Collaboration markers (Discussion and Turn Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Labels:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#readability-readability-analysis-turn-level">readability: Readability Analysis (Turn-Level)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Labels:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#sentiment">Sentiment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sentiment-sentiment-analysis-turnlevel">sentiment: Sentiment Analysis (Turn–Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#toxicity">Toxicity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#toxicity-toxicity-analysis-turnlevel">toxicity: Toxicity Analysis (Turn–Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#turn-taking">Turn Taking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#participation-participation-analysis-discussion-and-turn-level">participation: Participation Analysis (Discussion and Turn Level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-visualization-discussion-level">make_visualization: (Discussion-Level)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DiscQuA</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DiscQuA: Discussion Quality Aspects</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/introduction.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="discqua-discussion-quality-aspects">
+<h1>DiscQuA: Discussion Quality Aspects<a class="headerlink" href="#discqua-discussion-quality-aspects" title="Link to this heading"></a></h1>
+<p><img alt="Alt Text" src="https://github.com/nikos-Gk/dialogue-quality-measures/raw/408bb90c79d6b8a428e9d34ed2434ec5edde56c8/images/discqua.png" /></p>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<section id="option-1-install-from-pypi">
+<h2>Option 1: Install from PyPI<a class="headerlink" href="#option-1-install-from-pypi" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">discqua</span><span class="o">==</span><span class="mf">0.0.1</span>
+</pre></div>
+</div>
+</section>
+<section id="option-2-install-from-source-development-mode">
+<h2>Option 2: Install from Source (Development Mode)<a class="headerlink" href="#option-2-install-from-source-development-mode" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nikos</span><span class="o">-</span><span class="n">Gk</span><span class="o">/</span><span class="n">dialogue</span><span class="o">-</span><span class="n">quality</span><span class="o">-</span><span class="n">measures</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">dialogue</span><span class="o">-</span><span class="n">quality</span><span class="o">-</span><span class="n">measures</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="o">--</span><span class="nb">all</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">discMeasuresEnv</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.12.0</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">discMeasuresEnv</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">spacy</span> <span class="n">download</span> <span class="n">en_core_web_sm</span>
+
+<span class="n">Additional</span> <span class="n">Setup</span> <span class="k">for</span> <span class="n">Readability</span> <span class="n">Measures</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;averaged_perceptron_tagger_eng&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h1>
+<p>In the main.py file you can find examples of usage.</p>
+</section>
+<section id="saving">
+<h1>Saving<a class="headerlink" href="#saving" title="Link to this heading"></a></h1>
+<p>-By default, output files are saved to the current working directory (cwd).</p>
+<p>-Users can choose to disable automatic saving of output files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">set_saving_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>-To specify a custom save path:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<span class="n">saving_path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">set_output_path</span><span class="p">(</span><span class="n">saving_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="logging">
+<h1>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h1>
+<p>-A logger is used to display informational and error messages. Logging level can be customized by the user.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="description-of-input-parameters">
+<h1>Description of input parameters<a class="headerlink" href="#description-of-input-parameters" title="Link to this heading"></a></h1>
+<p>-message_list: The list of utterances in the discussion.</p>
+<p>-speakers_list: The corresponding list of speakers for each utterance.</p>
+<p>-msgsid_list: List of messages ids corresponding to each utterance.</p>
+<p>-replyto_list: List indicating the message ID each utterance is replying to.</p>
+<p>-disc_id: A unique identifier for the discussion.</p>
+<p>-conver_topic: The topic of the discussion.</p>
+<p>-discussion_level: A boolean flag; if True, the annotations are applied at the discussion level; otherwise at the utterance level.</p>
+<p>-ctx: Number of previous utterances to include as context for each input.</p>
+<p>-openAIKEY: OpenAI API key, required if using OpenAI-based models.</p>
+<p>-model_type: Specifies the model to use; options are “openai” or “transformers” .</p>
+<p>-model_path:  Path to the local LlaMA model directory, used only if model_type is “transformers”.</p>
+<p>-gpu: A boolean flag; if True, utilizes GPU (when available); otherwise defaults to CPU.</p>
+<p>-device: The device to load the model on. If None, the device will be inferred. Defaults to cpu.</p>
+</section>
+<section id="argument-quality">
+<h1>Argument Quality<a class="headerlink" href="#argument-quality" title="Link to this heading"></a></h1>
+<section id="arg-dimensions-argument-quality-aspects-turn-level">
+<h2>arg_dimensions: Argument Quality Aspects (Turn-Level)<a class="headerlink" href="#arg-dimensions-argument-quality-aspects-turn-level" title="Link to this heading"></a></h2>
+<p>This module evaluates the quality of argumentation in individual discussion turns using the taxonomy proposed by Wachsmuth et al. (2017). Leveraging either OpenAI’s language models or a locally hosted Llama model, it assigns scores across multiple dimensions of argument quality, with each dimension rated on a scale from 1 (low) to 3 (high).</p>
+<section id="logic-dimensions">
+<h3>Logic Dimensions:<a class="headerlink" href="#logic-dimensions" title="Link to this heading"></a></h3>
+<p>-Label 1a-Local Acceptability: Premises of the argument worthy of being believed.</p>
+<p>-Label 1b-Local Relevance: Premises support/attack the conclusion of the argument.</p>
+<p>-Label 1c-Local Sufficiency: Premises enough to draw the conclusion of the argument.</p>
+<p>-Label 1_overall-Cogency: Argument has locally acceptable, relevant, and sufficient premises.</p>
+</section>
+<section id="rhetoric-dimensions">
+<h3>Rhetoric Dimensions:<a class="headerlink" href="#rhetoric-dimensions" title="Link to this heading"></a></h3>
+<p>-Label 2a-Credibility: Argument makes the author worthy of credence.</p>
+<p>-Label 2b-Emotional Appeal: Argument creates emotions that make the audience open to it.</p>
+<p>-Label 2c-Clarity: Argument avoids deviation from the issue, and uses correct and unambiguous language.</p>
+<p>-Label 2d-Appropriateness: Language proportional to the issue, supports credibility and emotions.</p>
+<p>-Label 2e-Arrangement: Discussion topic, arguments and conlusions are presented in the right order.</p>
+<p>-Label 2_overall-Effectiveness: Argument persuades the audience.</p>
+</section>
+<section id="dialectic-dimensions">
+<h3>Dialectic Dimensions:<a class="headerlink" href="#dialectic-dimensions" title="Link to this heading"></a></h3>
+<p>-Label 3a-Global Acceptability: Audience accepts the use of the argument.</p>
+<p>-Label 3b-Global Relevance: Argument helps arrive at an agreement.</p>
+<p>-Label 3c-Global Sufficiency: Argument adequately rebuts the anticipated counter-arguments to its conclusion.</p>
+<p>-Label 3_overall-Reasonableness: Argument is (globally) acceptable, relevant, and sufficient.</p>
+</section>
+<section id="overall-quality">
+<h3>Overall Quality:<a class="headerlink" href="#overall-quality" title="Link to this heading"></a></h3>
+<p>-Label 4-overall quality: The holistic quality of the argument across all dimensions.</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">arg_dimensions</span>
+    <span class="n">arg_dim_scores</span> <span class="o">=</span> <span class="n">arg_dimensions</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                    <span class="n">dimension</span><span class="o">=</span><span class="s2">&quot;logic&quot;</span><span class="p">,</span>
+                                    <span class="p">)</span>
+    <span class="n">arg_dim_scores</span> <span class="o">=</span> <span class="n">arg_dimensions</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                    <span class="n">dimension</span><span class="o">=</span><span class="s2">&quot;logic&quot;</span><span class="p">,</span>
+                                    <span class="p">)</span>
+
+<span class="n">where</span> <span class="n">dimension</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">The</span> <span class="n">argument</span> <span class="n">quality</span> <span class="n">dimension</span> <span class="n">to</span> <span class="n">evaluate</span><span class="o">.</span> <span class="n">Choose</span> <span class="n">from</span><span class="p">:</span>
+            <span class="o">-</span> <span class="s2">&quot;logic&quot;</span><span class="p">:</span> <span class="n">Evaluates</span> <span class="n">the</span> <span class="n">internal</span> <span class="n">structure</span> <span class="ow">and</span> <span class="n">reasoning</span> <span class="n">of</span> <span class="n">the</span> <span class="n">argument</span><span class="o">.</span>
+            <span class="o">-</span> <span class="s2">&quot;rhetoric&quot;</span><span class="p">:</span> <span class="n">Assesses</span> <span class="n">the</span> <span class="n">persuasive</span> <span class="ow">and</span> <span class="n">stylistic</span> <span class="n">elements</span><span class="o">.</span>
+            <span class="o">-</span> <span class="s2">&quot;dialectic&quot;</span><span class="p">:</span> <span class="n">Measures</span> <span class="n">how</span> <span class="n">well</span> <span class="n">the</span> <span class="n">argument</span> <span class="n">contributes</span> <span class="n">to</span> <span class="n">discussion</span> <span class="ow">and</span> <span class="n">resolution</span><span class="o">.</span>
+            <span class="o">-</span> <span class="s2">&quot;overall&quot;</span><span class="p">:</span> <span class="n">Provides</span> <span class="n">a</span> <span class="n">holistic</span> <span class="n">score</span> <span class="n">across</span> <span class="nb">all</span> <span class="n">dimensions</span><span class="o">.</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="overall-arg-quality-overall-argument-quality-discussion-level">
+<h2>overall_arg_quality: Overall Argument Quality (Discussion-Level)<a class="headerlink" href="#overall-arg-quality-overall-argument-quality-discussion-level" title="Link to this heading"></a></h2>
+<p>This module evaluates the average overall quality of argumentation across the entire discussion. Leveraging either OpenAI’s language models or a locally hosted Llama model, it returns a discussion-level score that reflects the holistic strength of arguments exchanged throughout the discussion.</p>
+<section id="scoring-modes">
+<h3>Scoring Modes:<a class="headerlink" href="#scoring-modes" title="Link to this heading"></a></h3>
+<p>-mode=”real”: Returns a real-valued score (e.g., 2.7) on a scale from 1 to 5.</p>
+<p>-mode=”rating”: Returns a discrete integer score on a scale from 1 (low) to 3 (high).</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">overall_arg_quality</span>
+
+    <span class="n">overall_argument_quality_score</span> <span class="o">=</span> <span class="n">overall_arg_quality</span><span class="p">(</span>
+                                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">,</span>
+                                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                        <span class="p">)</span>
+
+    <span class="n">overall_argument_quality_score</span> <span class="o">=</span> <span class="n">overall_arg_quality</span><span class="p">(</span>
+                                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                                        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;real&quot;</span><span class="p">,</span>
+                                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                        <span class="p">)</span>
+            
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="coherence">
+<h1>Coherence<a class="headerlink" href="#coherence" title="Link to this heading"></a></h1>
+<section id="coherence-disc-coherence-analysis-discussion-level">
+<h2>coherence_disc: Coherence Analysis (Discussion-Level)<a class="headerlink" href="#coherence-disc-coherence-analysis-discussion-level" title="Link to this heading"></a></h2>
+<p>This module assesses the overall coherence of a discussion using OpenAI’s language models or a locally hosted Llama model (Zhang et al., 2024). It assesses how logically and contextually connected the messages are across the discussion. The model assigns a coherence score (integer) to the entire discussion on a 1-to-5 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Poor coherence (incoherent or disjointed)</p></li>
+<li><p><strong>5</strong> – Strong coherence (well-structured and contextually consistent)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">coherence_disc</span>
+
+    <span class="n">coherence_disc_score</span><span class="o">=</span><span class="n">coherence_disc</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;you key&quot;</span><span class="p">,</span>
+                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                        <span class="p">)</span>
+
+    <span class="n">coherence_disc_score</span><span class="o">=</span><span class="n">coherence_disc</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="coherence-response-coherence-analysis-turn-level">
+<h2>coherence_response: Coherence Analysis (Turn-Level)<a class="headerlink" href="#coherence-response-coherence-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module evaluates the coherence of individual responses within a discussion. Using OpenAI’s language models or a locally hosted Llama model, it examines how well a message aligns with its conversational context. The model assigns a coherence score (integer number) to each response on a 1-to-5 scale:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Incoherent response (off-topic, confusing, or disjointed)</p></li>
+<li><p><strong>5</strong> – Coherent (well-aligned with context, clear, and logically structured)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">coherence_response</span>
+
+    <span class="n">score</span> <span class="o">=</span> <span class="n">coherence_response</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;you key&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                              <span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">coherence_response</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                              <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="coherence-ecoh-coherence-analysis-turn-level">
+<h2>coherence_ecoh: Coherence Analysis (Turn-Level)<a class="headerlink" href="#coherence-ecoh-coherence-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module evaluates the coherence of individual responses within a discussion. Using a locally hosted model presented at Mendonça, Trancoso and Lavie (2024), it examines how well a comment aligns with its conversational context. The model assigns a binary coherence label to each response, where:</p>
+<ul class="simple">
+<li><p><strong>0</strong> – Incoherent response (off-topic, confusing, or disjointed)</p></li>
+<li><p><strong>1</strong> – Coherent (well-aligned with context, clear, and logically structured)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">coherence_ecoh</span>
+
+    <span class="n">coherence_booleans</span> <span class="o">=</span> <span class="n">coherence_ecoh</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speaker_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
+                                        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="controversy">
+<h1>Controversy<a class="headerlink" href="#controversy" title="Link to this heading"></a></h1>
+<section id="controversy-controversy-analysis-discussion-and-turn-level">
+<h2>controversy: Controversy Analysis (Discussion and Turn Level)<a class="headerlink" href="#controversy-controversy-analysis-discussion-and-turn-level" title="Link to this heading"></a></h2>
+<p>This module quantifies the level of controversy in a discussion by analyzing the standard deviation of sentiment scores assigned to individual comments (Avalle et al., 2024). Sentiment scores are derived using a pretrained BERT model.</p>
+<section id="outputs">
+<h3>Outputs:<a class="headerlink" href="#outputs" title="Link to this heading"></a></h3>
+<p>-controversy_per_disc_unorm (discussion_level=True): Sample standard deviation of the unnormalized sentiment scores across all comments in the discussion.</p>
+<p>-controversy_per_disc_norm (discussion_level=True): Sample standard deviation of the normalized sentiment scores across the discussion.</p>
+<p>-controversy_per_utt_unorm (discussion_level=False): Rolling standard deviation of the unnormalized sentiment scores.</p>
+<p>-controversy_per_utt_norm (discussion_level=False): Rolling standard deviation of the normalized sentiment scores.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">controversy</span>
+
+    <span class="n">unorm_scores</span><span class="p">,</span> <span class="n">norm_scores</span> <span class="o">=</span> <span class="n">controversy</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span> 
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span> 
+                                            <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                            <span class="n">discussion_level</span><span class="o">=</span><span class="kc">True</span>
+                                            <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="dialogue-acts">
+<h1>Dialogue Acts<a class="headerlink" href="#dialogue-acts" title="Link to this heading"></a></h1>
+<section id="dialogue-acts-dialogue-acts-analysis-turn-level">
+<h2>dialogue_acts: Dialogue Acts Analysis (Turn-Level).<a class="headerlink" href="#dialogue-acts-dialogue-acts-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module analyzes utterances in a discussion to identify dialogue acts that indicate the deliberative quality of communicative exchanges, following the frameworks presented by Fournier-Tombs and MacKenzie (2021) and Zhang, Culbertson &amp; Paritosh (2017). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific dialogue act.</p>
+<section id="dialogue-act-labels">
+<h3>Dialogue Act Labels:<a class="headerlink" href="#dialogue-act-labels" title="Link to this heading"></a></h3>
+<p>-Label 0: Interruption - Comment that interrupts a previous utterance.</p>
+<p>-Label 1: Explanation - Comment that provides a minimum level of context for the claims or opinions that are expressed.</p>
+<p>-Label 2: Causal reasoning - Comment that makes explicit causal connections between any observations, values, or objectives and the claims, conclusions, or recommendations that are made.</p>
+<p>-Label 3: Narrative - Comment that employs personall story telling to justify claims or values.</p>
+<p>-Label 4: Question - Comment that asks for clarifications or input.</p>
+<p>-Label 5: Response - Comment that replies to a question directed toward it.</p>
+<p>-Label 6: Advocacy - Comment that explicitly defends or advances the interests or claims of identifiable groups or communities.</p>
+<p>-Label 7: Public interest - Comment that attempts to connect claims, policies, or recommendations to the interests of the community as a whole.</p>
+<p>-Label 8: Disrespect - Comment that contains insults, dispersions, misrepresentations, name calling, and dismissive or disrespectful statements.</p>
+<p>-Label 9: Respect - Comment that contains explicit shows of respect, such as salutations, complements, or apologies.</p>
+<p>-Label 10: Counterarguments - Comment that engages with critiques made by other comments or attempts to address or respond to counter claims, concerns, or countervailing evidence.</p>
+<p>-Label 11: Constructive proposal - Comment that proposes solutions to shared problems, alternative options, or compromises.</p>
+<p>-Label 12: Sarcasm (mocking)- Comment that is primarily a joke, a piece of sarcasm, or a pun intended to get a laugh or be silly but not trying to add information.</p>
+<p>-Label 13: Sarcasm (nomocking)- Comment that uses sarcasm in a non-mocking way (e.g., aimed at devaluing the reference object) but just as a communication function that aligns with the nature of the point that is being made, or necessary to communicate to a particular audience.</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">dialogue_acts</span>
+
+    <span class="n">dialogue_acts_scores</span> <span class="o">=</span> <span class="n">dialogue_acts</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                            <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="p">)</span>
+
+    <span class="n">dialogue_acts_scores</span> <span class="o">=</span> <span class="n">dialogue_acts</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                            <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="dispute-tactics">
+<h1>Dispute Tactics<a class="headerlink" href="#dispute-tactics" title="Link to this heading"></a></h1>
+<section id="dispute-tactics-disagreement-levels-and-coordination-labels-analysis-turn-level">
+<h2>dispute_tactics: Disagreement Levels and Coordination Labels Analysis (Turn-Level).<a class="headerlink" href="#dispute-tactics-disagreement-levels-and-coordination-labels-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module analyzes utterances in a discussion to identify levels of disagreement and markers of coordination, based on the annotation framework introduced by De Kock and Vlachos (2022). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) to indicate the presence or absence of a specific disagreement level or coordination label.</p>
+<section id="disagreement-levels">
+<h3>Disagreement levels:<a class="headerlink" href="#disagreement-levels" title="Link to this heading"></a></h3>
+<p>-Level 0-Name calling/hostility: Comment with direct insults, or use of an equally hostile tone or language.</p>
+<p>-Level 1-Ad hominem/ad argument: Comment that attacks other users to discredit them or their arguments without addressing the content.</p>
+<p>-Level 2-Attempted derailing/off-topic: Comment that is unrelated to the current line of discussion.</p>
+<p>-Level 3-Policing the discussion: Comment that does not address (opposing) arguments’ content but mainly try to “policy” the discussion (e.g., telling people to “calm down”).</p>
+<p>-Level 4a-Stating your stance: Comment that states an opposing view (stance), with little or no supporting evidence.</p>
+<p>-Level 4b-Repeated argument: Comment that re-states a previously expressed argument, potentially using different words, but without furthering the discussion.</p>
+<p>-Level 5-Counterargument: Comment that states an opposing view (stance), while providing supporting reasoning and/or evidence.</p>
+<p>-Level 6-Refutation: Comment that responds to an argument and explains why it is mistaken, using new evidence or reasoning.</p>
+<p>-Level 7-Refuting the central point: Comment that directly refutes the central point of an argument, explaining why it is mistaken, using new evidence or reasoning.</p>
+</section>
+<section id="coordination-labels-attempts-to-promote-understanding-and-consensus">
+<h3>Coordination labels (attempts to promote understanding and consensus):<a class="headerlink" href="#coordination-labels-attempts-to-promote-understanding-and-consensus" title="Link to this heading"></a></h3>
+<p>-Label A-Bailing out: An indication that a person is giving up on a discussion and will no longer engage.</p>
+<p>-Label B-Contextualisation: Usually in the first utterance, an individual “sets the stage” by describing what aspect they are
+challenging.</p>
+<p>-Label C-Asking questions: Seeking to understand another person’s opinion better. This does not include rhetorical questions, which are generally disagreement moves.</p>
+<p>-Label D-Providing clarification: Answering questions or providing information which seeks to create understanding, rather than only furthering a point.</p>
+<p>-Label E-Suggesting a compromise: An attempt to find a midway between one’s own point and the opposer’s.</p>
+<p>-Label F-Coordinating: In disagreement threads, discussions about edits that may indicate a compromise.</p>
+<p>-Label G-Conceding/recanting: An explicit admission that an interlocutor is willing to relinquish their point.</p>
+<p>-Label H-I don’t know: Admitting that one is uncertain-a signal that the speaker is receptive to the idea that there are unknowns which may impact their argument.</p>
+<p>-Label I-Other: For utterances not covered by any other class, for instance, social niceties.</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">dispute_tactics</span>
+
+    <span class="n">disp_tact</span> <span class="o">=</span> <span class="n">dispute_tactics</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                <span class="p">)</span>
+
+    <span class="n">disp_tact</span> <span class="o">=</span> <span class="n">dispute_tactics</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="diversity">
+<h1>Diversity<a class="headerlink" href="#diversity" title="Link to this heading"></a></h1>
+<section id="diversity-disc-diversity-analysis-discussion-level">
+<h2>diversity_disc: Diversity Analysis (Discussion-Level)<a class="headerlink" href="#diversity-disc-diversity-analysis-discussion-level" title="Link to this heading"></a></h2>
+<p>This module assesses the diversity of arguments within a discussion using OpenAI’s language models or a locally hosted Llama model (Zhang et al., 2024). Diversity in arguments reflects the presence of multiple perspectives, contributing to a richer and more balanced exchange. The model assigns a diversity score (integer number) to the entire discussion on a 1-to-5 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Poor diversity (high similarity or repetition in arguments)</p></li>
+<li><p><strong>5</strong> – High diversity (broad range of perspectives and reasoning styles)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">diversity_disc</span>
+
+
+    <span class="n">diversity_disc_score</span> <span class="o">=</span> <span class="n">diversity_disc</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                         <span class="p">)</span>
+    <span class="n">diversity_disc_score</span> <span class="o">=</span> <span class="n">diversity_disc</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                         <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="diversity-response-diversity-analysis-turn-level">
+<h2>diversity_response: Diversity Analysis (Turn-Level)<a class="headerlink" href="#diversity-response-diversity-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module computes diversity scores for each response within a discussion using OpenAI’s language models or a locally hosted Llama model. The model assigns a diversity score (integer number) to each response on a 1-to-5 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Poor diversity (high similarity or repetition in arguments)</p></li>
+<li><p><strong>5</strong> – High diversity (broad range of perspectives and reasoning styles)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">diversity_response</span>
+
+    <span class="n">diversity_resp_score</span> <span class="o">=</span> <span class="n">diversity_response</span><span class="p">(</span>
+                                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                             <span class="p">)</span>
+    <span class="n">diversity_resp_score</span> <span class="o">=</span> <span class="n">diversity_response</span><span class="p">(</span>
+                                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                                <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                             <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ngramdiversity-ngram-diversity-based-on-word-overlap-turn-level">
+<h2>ngramdiversity: Ngram diversity based on word overlap (Turn-level).<a class="headerlink" href="#ngramdiversity-ngram-diversity-based-on-word-overlap-turn-level" title="Link to this heading"></a></h2>
+<p>This module analyzes ngram diversity by measuring word overlap between consecutive messages within a discussion (Tan et al., 2016). It focuses on:</p>
+<p>-common words (comwords),</p>
+<p>-stopwords,</p>
+<p>-content words (contwords).</p>
+<section id="labels-let-utt-i-and-utt-i-1-two-consecutive-utterances-in-the-discussion">
+<h3>Labels: Let utt_i, and utt_i+1 two consecutive utterances in the discussion.<a class="headerlink" href="#labels-let-utt-i-and-utt-i-1-two-consecutive-utterances-in-the-discussion" title="Link to this heading"></a></h3>
+<p>-n_comwords, n_stopwords, n_contwords: Count of overlapping words between utt_i and utt_i+1 (i.e., |utt_i ∩ utt_i+1|).</p>
+<p>-reply_fra_comwords, reply_fra_stopwords, reply_fra_contwords: Proportion of overlapping words relative to the reply (i.e., |utt_i ∩ utt_i+1|/|utt_i+1|).</p>
+<p>-op_fra_comwords, op_fra_stopwords, op_fra_contwords: Proportion of overlapping words relative to the original message (i.e., |utt_i ∩ utt_i+1|/|utt_i|).</p>
+<p>-jac_comwords, jac_stopwords, jac_contwords: Jaccard similarity between the two utterances (i.e., |utt_i ∩ utt_i+1|/|utt_i ∪ utt_i+1|).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">ngramdiversity</span>
+
+    <span class="n">lexical_diversity</span><span class="o">=</span><span class="n">ngramdiversity</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="empathy">
+<h1>Empathy<a class="headerlink" href="#empathy" title="Link to this heading"></a></h1>
+<section id="empathy-empathy-analysis-turnlevel">
+<h2>empathy: Empathy Analysis (Turn–Level)<a class="headerlink" href="#empathy-empathy-analysis-turnlevel" title="Link to this heading"></a></h2>
+<p>This module analyzes utterances in a discussion to identify empathetic traits, based on the taxonomy introduced by Welivita and Pu (2020). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific empathetic intent.</p>
+<section id="labels">
+<h3>Labels:<a class="headerlink" href="#labels" title="Link to this heading"></a></h3>
+<p>-Label 0-Questioning: Seeks clarification or additional information.</p>
+<p>-Label 1–Acknowledging: Recognizes or validates another’s feelings, experiences, or perspective without implying agreement.</p>
+<p>-Label 2-Agreeing: Shows support or alignment with another’s viewpoint, statement, or emotion.</p>
+<p>-Label 3–Consoling: Offers comfort or emotional support in response to distress or hardship.</p>
+<p>-Label 4–Encouraging: Provides support or affirmation in response to hopeful or uplifting content.</p>
+<p>-Label 5–Sympathizing: Expresses pity, sorrow, or shared concern in response to distressing content.</p>
+<p>-Label 6-Wishing: Expresses hope, goodwill, or kind intentions toward another participant.</p>
+<p>-Label 7-Suggesting: Offers advice, recommendations, or possible actions in response to a shared concern or situation.</p>
+<p>-Label 8–Sharing Own Thoughts: Expresses personal views or reflections, often without directly replying to others.</p>
+<p>-Label 9-Sharing Experience: Recounts a personal story or experience to connect with or illustrate a point.</p>
+<p>-Label 10-Advising: Provides guidance, recommendations, or suggestions.</p>
+<p>-Label 11-Expressing Care: Shows concern or compassion toward another participant.</p>
+<p>-Label 12–Expressing Relief: Conveys relief in response to another’s stressful or emotionally intense situation.</p>
+<p>-Label 13–Disapproving: Expresses disagreement, criticism, or concern toward another’s viewpoint or actions.</p>
+<p>-Label 14–Appreciating: Expresses gratitude, admiration, or positive recognition toward another participant.</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">empathy</span>
+
+    <span class="n">expr_empathy_labels</span> <span class="o">=</span> <span class="n">empathy</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                 <span class="p">)</span>
+    <span class="n">expr_empathy_labels</span> <span class="o">=</span> <span class="n">empathy</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                 <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="engagement">
+<h1>Engagement<a class="headerlink" href="#engagement" title="Link to this heading"></a></h1>
+<section id="engagement-disc-engagement-analysis-discussionlevel">
+<h2>engagement_disc: Engagement Analysis (Discussion–Level)<a class="headerlink" href="#engagement-disc-engagement-analysis-discussionlevel" title="Link to this heading"></a></h2>
+<p>This module assesses the level of engagement within a discussion using OpenAI’s language models or a locally hosted Llama model (Zhang et al., 2024). Engagement captures how actively participants contribute and how sustained the interaction is across the discussion. The model assigns an engagement score (integer number) to the entire discussion on a 1-to-5 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Law engagement (limited interaction, short or shallow exchanges)</p></li>
+<li><p><strong>5</strong> – High engagement (frequent, sustained, and reciprocal participation)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">engagement_disc</span>
+
+    <span class="n">engagement_disc_score</span> <span class="o">=</span> <span class="n">engagement_disc</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                           <span class="p">)</span>
+    <span class="n">engagement_disc_score</span> <span class="o">=</span> <span class="n">engagement_disc</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                           <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="engagement-response-engagement-analysis-turnlevel">
+<h2>engagement_response: Engagement Analysis (Turn–Level)<a class="headerlink" href="#engagement-response-engagement-analysis-turnlevel" title="Link to this heading"></a></h2>
+<p>This module assigns engagement scores for each response in a discussion using OpenAI’s language models or a locally hosted Llama model. Each response is evaluated in context for its engagement quality based on characteristics of variety of response according to the context, likelihood of encouraging the other participant to respond, likelihood of encouraging a quality response from the other participants, interestingness, specificity, and likelihood of creating a sense of belonging for the other participants (Ferron et al., 2023).  The model assigns an engagement score to each response on a continuous scale from 0 to 100, where:</p>
+<ul class="simple">
+<li><p><strong>0</strong> – disengaging.</p></li>
+<li><p><strong>100</strong> – very engaging.</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">engagement_response</span>
+
+     <span class="n">engagement_resp_score</span> <span class="o">=</span> <span class="n">engagement_response</span><span class="p">(</span>
+                                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                                <span class="p">)</span>
+                                                            
+     <span class="n">engagement_resp_score</span> <span class="o">=</span> <span class="n">engagement_response</span><span class="p">(</span>
+                                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                                <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="reciprocity-reciprocity-motifs-serve-as-proxies-for-engagement-discussion-and-turn-level">
+<h2>reciprocity: Reciprocity Motifs: Serve as proxies for engagement (Discussion and Turn Level)<a class="headerlink" href="#reciprocity-reciprocity-motifs-serve-as-proxies-for-engagement-discussion-and-turn-level" title="Link to this heading"></a></h2>
+<p>This module gives the reciprocity motifs proposed by Zhang et al. (2018). These features help uncover participation patterns and interactional dynamics.</p>
+<p>-Reciprocity motif: Occurs when the target of a reply returns to respond to the replier.</p>
+<p>-External reciprocity motif: Captures the tedency of a comment to draw responses from speakers beyond its explicit target.</p>
+<p>-Dyadic interaction motif: Tracks dyadic (back-and-forth) interactions between pairs of participants across the entire discussion.</p>
+<p>-Incoming triads: Cases where a speaker receives replies from two different participants.</p>
+<p>-Outgoing triads: Instances where a speaker replies to two different participants.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">reciprocity</span>
+ <span class="n">structure_features</span> <span class="o">=</span><span class="n">reciprocity</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">replyto_list</span><span class="o">=</span><span class="n">replyto_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">discussion_level</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="informativeness">
+<h1>Informativeness<a class="headerlink" href="#informativeness" title="Link to this heading"></a></h1>
+<section id="informativeness-disc-informativeness-analysis-discussion-level">
+<h2>informativeness_disc: Informativeness Analysis (Discussion-Level)<a class="headerlink" href="#informativeness-disc-informativeness-analysis-discussion-level" title="Link to this heading"></a></h2>
+<p>This module evaluates the informativeness of a discussion using OpenAI’s language models or a locally hosted Llama model (Zhang et al., 2024). It estimates how much relevant, useful, and novel information is conveyed by the participants throughout the discussion. The model assigns an informativeness score (integer) to the entire discussion on a 1-to-5 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Low informativeness (vague, repetitive, or off-topic discussion)</p></li>
+<li><p><strong>5</strong> – High informativeness (substantive, relevant, and information-rich discussion)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">informativeness_disc</span>
+
+    <span class="n">informativeness_disc_score</span> <span class="o">=</span> <span class="n">informativeness_disc</span><span class="p">(</span>
+                                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                     <span class="p">)</span>
+    <span class="n">informativeness_disc_score</span> <span class="o">=</span> <span class="n">informativeness_disc</span><span class="p">(</span>
+                                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                     <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="informativeness-response-informativeness-analysis-turn-level">
+<h2>informativeness_response: Informativeness Analysis (Turn-Level)<a class="headerlink" href="#informativeness-response-informativeness-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module evaluates the informativeness of individual responses within a discussion. Using OpenAI’s language models or a locally hosted Llama model, it assigns an informativeness score (integer number) to each response on a 1-to-5 scale:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Low informativeness (vague, repetitive, or off-topic discussion)</p></li>
+<li><p><strong>5</strong> – High informativeness (substantive, relevant, and information-rich discussion)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">informativeness_response</span>
+
+    <span class="n">informativeness_resp_score</span> <span class="o">=</span> <span class="n">informativeness_response</span><span class="p">(</span>
+                                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                            <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                            <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                                         <span class="p">)</span>
+    <span class="n">informativeness_resp_score</span> <span class="o">=</span> <span class="n">informativeness_response</span><span class="p">(</span>
+                                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                            <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                            <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                            <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                            <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                                            <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                                            <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                                            <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                                         <span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="persuasiveness">
+<h1>Persuasiveness<a class="headerlink" href="#persuasiveness" title="Link to this heading"></a></h1>
+<section id="persuasiveness-disc-persuasiveness-analysis-discussion-level">
+<h2>persuasiveness_disc: Persuasiveness Analysis (Discussion-Level)<a class="headerlink" href="#persuasiveness-disc-persuasiveness-analysis-discussion-level" title="Link to this heading"></a></h2>
+<p>This module assesses the persuasiveness of arguments exchanged within a discussion using OpenAI’s language models or a locally hosted Llama model.The model evaluates the extent to which the arguments are convincing, well-supported, and logically compelling. This reflects the rhetorical strength of the discussion and how effectively participants attempt to sway one another. The model assigns a persuasiveness score (integer) to the entire discussion on a 1-to-5 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Low persuasiveness.</p></li>
+<li><p><strong>5</strong> – High persuasiveness.</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">persuasiveness_disc</span>
+
+    <span class="n">persuasiveness_score</span> <span class="o">=</span> <span class="n">persuasiveness_disc</span><span class="p">(</span>
+                                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                              <span class="p">)</span>
+    <span class="n">persuasiveness_score</span> <span class="o">=</span> <span class="n">persuasiveness_disc</span><span class="p">(</span>
+                                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                                <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                              <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="persuasion-strategy-persuasiveness-analysis-turn-level">
+<h2>persuasion_strategy: Persuasiveness Analysis (Turn-Level)<a class="headerlink" href="#persuasion-strategy-persuasiveness-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module analyzes utterances in a discussion to identify persuasion strategies presented by Chen et al. (2025). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) indicating the presence or absence of a specific persuasion strategy.</p>
+<section id="id1">
+<h3>Labels:<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>-Label 0–Presenting Facts: Uses verified evidence and logical reasoning to support a persuasive claim.</p>
+<p>-Label 1–Challenging &amp; Questioning: Disputes another viewpoint with skepticism and backs it up with strong counter-evidence.</p>
+<p>-Label 2-Emotion Eliciting: Provokes targeted feelings to sway opinions and attitudes.</p>
+<p>-Label 3–Self-Modeling: Shares personal actions or choices to set an example and inspire others to do the same.</p>
+<p>-Label 4–Building Trust: Promotes mutual understanding through respectful and empathetic dialogue.</p>
+<p>-Label 5–Courtesy Tips: Shares thanks, praise, or approval to foster goodwill and reduce tension.</p>
+<p>-Label 6-Compromise: Expresses concessions on time to avoid making the discussion too intense causing someone to leave the discussion.</p>
+<p>-Label 7-Attaching Views: Shows empathy and attentiveness by echoing another’s perspective with kindness and concern.</p>
+<p>-Label 8–Problem Decomposition: Breaks down complex goals into clear, manageable parts to guide discussion, clarify views, and build consensus.</p>
+<p>-Label 9-Social Identity: Highlights shared affiliations or values to foster group solidarity and boost persuasive impact.</p>
+<p>-Label 10-Herd Mentality: Appeals to popular opinion or social norms to imply that widespread acceptance signals correctness.</p>
+<p>-Label 11–Emotive Framing: Expresses a strong personal feeling or tone to deepen impact and emotionally connect with others.</p>
+<p>-Label 12–Logical Appeal: Strengthens credibility by using clear logic and sound reasoning to support persuasion.</p>
+<p>-Label 13–Task Inquiry: Poses questions that directly relate to achieving persuasive objectives.</p>
+<p>-Label 14–Personal Story: Shares a personal experience to inspire, build relatability, and reinforce persuasive impact.</p>
+<p>-Label 15–Refutation of Objections: Directly challenges another participant’s viewpoint by presenting counterarguments, evidence, or reasoning.</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">persuasion_strategy</span>
+
+    <span class="n">pers_strategy</span> <span class="o">=</span> <span class="n">persuasion_strategy</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                        <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="p">)</span>
+    <span class="n">pers_strategy</span> <span class="o">=</span> <span class="n">persuasion_strategy</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="politeness">
+<h1>Politeness<a class="headerlink" href="#politeness" title="Link to this heading"></a></h1>
+<section id="politeness-ngrams-politeness-markers-discussion-and-turn-level">
+<h2>politeness_ngrams: Politeness markers (Discussion and Turn Level)<a class="headerlink" href="#politeness-ngrams-politeness-markers-discussion-and-turn-level" title="Link to this heading"></a></h2>
+<p>This module annotates a discussion or each comment within the discussion with politeness markers, based on the framework presented by Danescu-Niculescu-Mizil et al. (2013).</p>
+<section id="id2">
+<h3>Labels:<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>-Please: The presence of the word ‘please’ in the sentence (e.g., Could you please say more…).</p>
+<p>-Start with ‘Please’: The sentence starts with the word ‘please’ (e.g., Please do not remove warnings …).</p>
+<p>-Has subject hedge: Any subject in the sentence depends on a hedge word (e.g., I suggest we start with …).</p>
+<p>-Use of ‘by the way’: The phrase ‘by the way’ is used in the sentence (e.g., By the way, where did you find …).</p>
+<p>-Hedge words: Any word in the sentence is a hedge word.</p>
+<p>-Assert factuality: Words that assert factuality, like ‘in fact,’ ‘actually,’ or ‘really’ (e.g., In fact you did link).</p>
+<p>-Start with deference: The sentence starts with deferential words like ‘great,’ ‘good,’ or ‘nice’ (e.g., Nice work so far on your rewrite).</p>
+<p>-Gratitude: Expressions of gratitude, like ‘thank’ or ‘thanks’ (e.g., I really appreciate that you’ve done them).</p>
+<p>-Apologising: Apologetic expressions like ‘sorry,’ or ‘I apologize’ (e.g.,  Sorry to bother you …).</p>
+<p>-1st person plural: First-person plural pronouns (e.g., Could we find a less complex name …).</p>
+<p>-1st person pronouns: First-person singular pronouns (e.g., It is my view that …).</p>
+<p>-Start with 1st person: The sentence starts with a first-person singular pronoun (e.g.,  I have just put the article …).</p>
+<p>-2nd person pronouns: Second-person pronouns like (e.g.,  But what’s the good source you have in mind?).</p>
+<p>-Start with 2nd person:  The sentence starts with a second-person pronoun (e.g., You’ve reverted yourself …).</p>
+<p>-Start with greeting: The sentence starts with a greeting word (e.g., Hey, I just tried to …).</p>
+<p>-Starts with question: The sentence starts with a question word like ‘what,’ ‘why,’ ‘who,’ or ‘how’ (What is your native language?).</p>
+<p>-Starts with conjunction: The sentence starts with a conjunction or transition word like ‘so,’ ‘then,’ ‘and,’ ‘but,’ or ‘or’ (e.g., So can you retrieve it or not?).</p>
+<p>-Positive sentiment words: The presence of positive sentiment words (e.g.,  Wow! / This is a great way to deal…).</p>
+<p>-Negative sentiment words: The presence of negative sentiment words (e.g., If you’re going to accuse me …).</p>
+<p>-Subjunctive words: The use of subjunctive mood words like ‘could’ or ‘would’ when preceded by ‘you’ (e.g., Could/Would you …).</p>
+<p>-Indicative words: The use of indicative mood words like ‘can’ or ‘will’ when preceded by ‘you’ (e.g., Can/Will you …).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">politeness_ngrams</span>
+
+    <span class="n">politeness_features_scores</span> <span class="o">=</span> <span class="n">politeness_ngrams</span><span class="p">(</span>
+                                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                                    <span class="n">discussion_level</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                  <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="politeness-politeness-analysis-turn-level">
+<h2>politeness: Politeness Analysis (Turn-Level)<a class="headerlink" href="#politeness-politeness-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module assesses the degree of respect and courtesy expressed in each utterance in a discussion by employing OpenAI’s language models or a locally hosted Llama model. The model assigns a politeness label (integer) on a 1-to-3 scale, where:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Low levels of respect and courtsey.</p></li>
+<li><p><strong>3</strong> – High levels of respect and courtsey.</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">politeness</span>
+
+    <span class="n">politeness_score</span> <span class="o">=</span> <span class="n">politeness</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                 <span class="p">)</span>
+    <span class="n">politeness_score</span> <span class="o">=</span> <span class="n">politeness</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                    <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                    <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                    <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                    <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                 <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="power-status-and-social-bias">
+<h1>Power, Status and Social Bias<a class="headerlink" href="#power-status-and-social-bias" title="Link to this heading"></a></h1>
+<section id="social-bias-social-bias-analysis-turn-level">
+<h2>social_bias: Social Bias Analysis (Turn-Level)<a class="headerlink" href="#social-bias-social-bias-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module analyzes utterances in a discussion to identify instances where individuals project social biases and stereotypes onto others, based on pragmatic frames introduced by Sap et al. (2020). Leveraging either OpenAI’s language models or a locally hosted Llama model, each utterance is assigned a binary label (1 or 0) that indicates the presence or absence of a specific type of social bias.</p>
+<section id="id3">
+<h3>Labels:<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>-Label 0-Offensiveness: Comment is considered offensive, disrespectful, or toxic to anyone/someone.</p>
+<p>-Label 1-Intent to offend: The intent of the comment is to be offensive/disrespectful to anyone.</p>
+<p>-Label 2-Lewd: The comment contains or alludes to sexual content/acts.</p>
+<p>-Label 3-Group implications:The comment implies offense/disrespect towards an identity-related group (e.g., Muslims).</p>
+<p>-Label 4-In group language: The comment targets an identity-related group and the author appears to be part of that demographic group.</p>
+<p>-Label 5: Other - For comments not covered by the above labels.</p>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">social_bias</span>
+    <span class="n">social_bias_labels</span> <span class="o">=</span> <span class="n">social_bias</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                        <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                    <span class="p">)</span>
+    <span class="n">social_bias_labels</span> <span class="o">=</span> <span class="n">social_bias</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                        <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                        <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                        <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                    <span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="coordination-linguistic-style-coordination-discussion-and-turn-level">
+<h2>coordination: Linguistic Style Coordination (Discussion and Turn Level)<a class="headerlink" href="#coordination-linguistic-style-coordination-discussion-and-turn-level" title="Link to this heading"></a></h2>
+<p>This module computes linguistic coordination metrics either at the discussion or at the utterance level. For each participant in a discussion, analyzes the extent to which they mirror the linguistic style of those they are responding to, as well as how much others, replying to them, imitate their linguistic style (Danescu-Niculescu-Mizil et al., 2012).</p>
+<p>-Linguistic Style: articles, auxiliary verbs, conjunctions, adverbs, personal pronouns, impersonal pronouns, prepositions, quantifiers.</p>
+<section id="id4">
+<h3>Labels:<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>-coord_allspeakers_2_user: Coordination from all speakers toward each user.</p>
+<p>-coord_user_2_allspeaker: Coordination from each user toward all other speakers.</p>
+<p>-agg1: aggegate measure that does not use smoothing assumptions.</p>
+<p>-agg2: aggegate measure that does use smoothing assumptions.</p>
+<p>-agg3: aggegate measure that does use (different) smoothing assumptions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">coordination</span>
+
+    <span class="n">coordination_scores</span> <span class="o">=</span> <span class="n">coordination</span><span class="p">(</span>
+                                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                        <span class="n">replyto_list</span><span class="o">=</span><span class="n">replyto_list</span><span class="p">,</span>
+                                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                        <span class="n">discussion_level</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                      <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="language-features">
+<h1>Language Features<a class="headerlink" href="#language-features" title="Link to this heading"></a></h1>
+<section id="collaboration-collaboration-markers-discussion-and-turn-level">
+<h2>collaboration: Collaboration markers (Discussion and Turn Level)<a class="headerlink" href="#collaboration-collaboration-markers-discussion-and-turn-level" title="Link to this heading"></a></h2>
+<p>This module annotates a discussion or each comment within the discussion with conversational markers indicative of collaboration, such as expressions of confidence, uncertainty, pronoun usage, and idea adoption, based on Niculae and Danescu-Niculescu-Mizil (2016).</p>
+<section id="id5">
+<h3>Labels:<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>-n_words: The number of words in an utterance.</p>
+<p>-pron_me: The number of first-person singular pronouns.</p>
+<p>-pron_we: The number of first-person plural pronouns.</p>
+<p>-pron_you: The number of second-person pronouns.</p>
+<p>-pron_3rd: The number of third-person pronouns.</p>
+<p>-geo: The number of geography-related terms.</p>
+<p>-meta: The number of meta-discourse terms. Meta terms are associated with the functionalities, actions, and elements within the StreetCrowd environment</p>
+<p>-certain: The number of words expressing certainty.</p>
+<p>-hedge: The number of hedging terms (words that indicate uncertainty).</p>
+<p>-n_introduced: The number of new content words introduced by a user.</p>
+<p>-n_introduced_w_certain: The number of new content words introduced in an utterance that are also accompanied by certainty terms.</p>
+<p>-n_introduced_w_hedge: The number of new content words introduced in an utterance that are also accompanied by hedging terms.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">collaboration</span>
+
+    <span class="n">collaboration_scores</span> <span class="o">=</span> <span class="n">collaboration</span><span class="p">(</span>
+                                            <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                            <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                            <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                            <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                            <span class="n">discussion_level</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="readability-readability-analysis-turn-level">
+<h2>readability: Readability Analysis (Turn-Level)<a class="headerlink" href="#readability-readability-analysis-turn-level" title="Link to this heading"></a></h2>
+<p>This module evaluates each utterance in a discussion using four standard readability metrics (Flesch, 1948; Gunning, 1952; Mc Laughlin, 1969; Kincaid, 1975). These measures help assess the complexity of language used at the turn level.</p>
+<section id="id6">
+<h3>Labels:<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>-Gunning_Fog: Gunning Fog Index-higher values indicate less readable text.</p>
+<p>-Smog: SMOG index-higher values indicate less readable text.</p>
+<p>-Flesch: The Flesch Reading Ease score-higher values indicate more readable text.</p>
+<p>-Flesch_Kincaid: Flesch-Kincaid index-higher values indicate less readable text.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">readability</span>
+    
+    <span class="n">readability_scores</span> <span class="o">=</span> <span class="n">readability</span><span class="p">(</span><span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span> <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span> <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="sentiment">
+<h1>Sentiment<a class="headerlink" href="#sentiment" title="Link to this heading"></a></h1>
+<section id="sentiment-sentiment-analysis-turnlevel">
+<h2>sentiment: Sentiment Analysis (Turn–Level)<a class="headerlink" href="#sentiment-sentiment-analysis-turnlevel" title="Link to this heading"></a></h2>
+<p>This module assesses the overall emotional tone of each utterance in a discussion by employing OpenAI’s language models or a locally hosted Llama model. The model assigns a sentiment label (integer) on a 0-to-2 scale:</p>
+<ul class="simple">
+<li><p><strong>0</strong> – Negative</p></li>
+<li><p><strong>1</strong> – Neutral</p></li>
+<li><p><strong>2</strong> – Positive</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">sentiment</span>
+    <span class="n">sentiment_scores</span> <span class="o">=</span> <span class="n">sentiment</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                <span class="p">)</span>
+    <span class="n">sentiment_scores</span> <span class="o">=</span> <span class="n">sentiment</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="toxicity">
+<h1>Toxicity<a class="headerlink" href="#toxicity" title="Link to this heading"></a></h1>
+<section id="toxicity-toxicity-analysis-turnlevel">
+<h2>toxicity: Toxicity Analysis (Turn–Level)<a class="headerlink" href="#toxicity-toxicity-analysis-turnlevel" title="Link to this heading"></a></h2>
+<p>This module assesses the toxicity level of each utterance in a discussion by employing OpenAI’s language models or a locally hosted Llama model. The model assigns a toxicity label (integer) on a 1-to-5 scale:</p>
+<ul class="simple">
+<li><p><strong>1</strong> – Not Toxic</p></li>
+<li><p><strong>5</strong> – Extremely Toxic (highly offensive, threatening, or likely to push others out of the conversation)</p></li>
+</ul>
+<p><em>Note: Requires access to OpenAI’s language models via API, or a locally hosted Llama model.</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">toxicity</span>
+    <span class="n">toxicity_scores</span> <span class="o">=</span> <span class="n">toxicity</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;your key&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                              <span class="p">)</span>
+    <span class="n">toxicity_scores</span> <span class="o">=</span> <span class="n">toxicity</span><span class="p">(</span>
+                                <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                <span class="n">conver_topic</span><span class="o">=</span><span class="n">conver_topic</span><span class="p">,</span>
+                                <span class="n">openAIKEY</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+                                <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;unsloth/Meta-Llama-3.1-8B-Instruct&quot;</span><span class="p">,</span>
+                                <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">ctx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                              <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="turn-taking">
+<h1>Turn Taking<a class="headerlink" href="#turn-taking" title="Link to this heading"></a></h1>
+<section id="participation-participation-analysis-discussion-and-turn-level">
+<h2>participation: Participation Analysis (Discussion and Turn Level)<a class="headerlink" href="#participation-participation-analysis-discussion-and-turn-level" title="Link to this heading"></a></h2>
+<p>This module computes the entropy of number of messages and word counts per participant to evaluate participation balance (Niculae and Danescu-Niculescu-Mizil, 2016). Values close to 1 indicate balanced contributions across participants, while values closer to 0 suggest a dominant speaker driving most of the discussion.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">participation</span>
+
+    <span class="n">entropy_scores</span> <span class="o">=</span><span class="n">participation</span><span class="p">(</span>
+                                    <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                                    <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                                    <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                                    <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                                    <span class="n">discussion_level</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                 <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="make-visualization-discussion-level">
+<h2>make_visualization: (Discussion-Level)<a class="headerlink" href="#make-visualization-discussion-level" title="Link to this heading"></a></h2>
+<p>Generates a PNG image that visualizes turn-taking behavior, highlighting how speakers alternate and interact throughout the discussion.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">discqua</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_visualization</span>
+
+    <span class="n">make_visualization</span><span class="p">(</span>
+                        <span class="n">message_list</span><span class="o">=</span><span class="n">message_list</span><span class="p">,</span>
+                        <span class="n">speakers_list</span><span class="o">=</span><span class="n">speakers_list</span><span class="p">,</span>
+                        <span class="n">msgsid_list</span><span class="o">=</span><span class="n">msgsid_list</span><span class="p">,</span>
+                        <span class="n">replyto_list</span><span class="o">=</span><span class="n">replyto_list</span><span class="p">,</span>
+                        <span class="n">disc_id</span><span class="o">=</span><span class="n">disc_id</span><span class="p">,</span>
+                      <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading"></a></h1>
+<p>-Avalle, M., Di Marco, N., Etta, G., Sangiorgio, E., Alipour, S., Bonetti, A., Alvisi, L., Scala, A., Baronchelli, A., Cinelli, M., &amp; Quattrociocchi, W. (2024). Persistent interaction patterns across social media platforms and over time. Nature, 628, 582-589.</p>
+<p>-Chen, M., Guo, B., Wang, H., Li, H., Zhao, Q., Liu, J., … &amp; Yu, Z. (2025). The future of cognitive strategy-enhanced persuasive dialogue agents: new perspectives and trends. Frontiers of Computer Science, 19(5), 195315.</p>
+<p>-Danescu-Niculescu-Mizil, C., Lee, L., Pang, B., &amp; Kleinberg, J. (2012). Echoes of power: Language effects and power differences in social interaction. In Proceedings of the 21st international conference on World Wide Web (pp. 699-708).</p>
+<p>-Danescu-Niculescu-Mizil, C., Sudhof, M., Jurafsky, D., Leskovec, J., &amp; Potts, C. (2013). A computational approach to politeness with application to social factors. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 250-259).</p>
+<p>-De Kock, C., &amp; Vlachos, A. (2022). How to disagree well: Investigating the dispute tactics used on Wikipedia. In Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (pp. 3824-3837).</p>
+<p>-Ferron, A., Shore, A., Mitra, E., &amp; Agrawal, A. (2023). MEEP: Is this engaging? prompting large language models for dialogue evaluation in multilingual settings. In Findings of the Association for Computational Linguistics: EMNLP 2023 (pp. 2078-2100).</p>
+<p>-Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32, 221.</p>
+<p>-Fournier-Tombs, E., &amp; MacKenzie, M. K. (2021). Big data and democratic speech: Predicting deliberative quality using machine learning techniques. Methodological Innovations, 14, 20597991211010416.</p>
+<p>-Gunning, R., (1952). The Technique of Clear Writing (McGraw-Hill, New York).</p>
+<p>-Kincaid, J. (1975). Derivation of new readability formulas for navy enlisted personnel. Branch Report 8-75.</p>
+<p>-Mc Laughlin, G. H. (1969). SMOG grading-a new readability formula. Journal of reading, 12, 639-646.</p>
+<p>-Mendonça, J., Trancoso, I., &amp; Lavie, A. (2024). ECoh: Turn-level Coherence Evaluation for Multilingual Dialogues. In Proceedings of the 25th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 516-532).</p>
+<p>-Niculae, V., &amp; Danescu-Niculescu-Mizil, C. (2016). Conversational Markers of Constructive Discussions. In Proceedings of the 2016 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (pp. 568-578).</p>
+<p>-Sap, M., Gabriel, S., Qin, L., Jurafsky, D., Smith, N. A., &amp; Choi, Y. (2020). Social Bias Frames: Reasoning about Social and Power Implications of Language. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (pp. 5477-5490).</p>
+<p>-Tan, C., Niculae, V., Danescu-Niculescu-Mizil, C., &amp; Lee, L. (2016). Winning arguments: Interaction dynamics and persuasion strategies in good-faith online discussions. In Proceedings of the 25th international conference on world wide web (pp. 613-624).</p>
+<p>-Wachsmuth, H., Naderi, N., Hou, Y., Bilu, Y., Prabhakaran, V., Thijm, T. A., Hirst, G., &amp; Stein, B. (2017). Computational argumentation quality assessment in natural language. In Proceedings of the 15th Conference of the European Chapter of the Association for Computational Linguistics: Volume 1, Long Papers (pp. 176-187).</p>
+<p>-Welivita, A., &amp; Pu, P. (2020). A Taxonomy of Empathetic Response Intents in Human Social Conversations. In Proceedings of the 28th International Conference on Computational Linguistics (pp. 4886-4899).</p>
+<p>-Zhang, A., Culbertson, B., &amp; Paritosh, P. (2017). Characterizing online discussion using coarse discourse sequences. In proceedings of the international AAAI conference on web and social media (Vol. 11, No. 1, pp. 357-366).</p>
+<p>-Zhang, J., Danescu-Niculescu-Mizil, C., Sauper, C., &amp; Taylor, S. J. (2018). Characterizing online public discussions through patterns of participant interactions. Proceedings of the ACM on Human-Computer Interaction, 2(CSCW), 1-27.</p>
+<p>-Zhang, C., D’Haro, L. F., Chen, Y., Zhang, M., &amp; Li, H. (2024). A comprehensive analysis of the effectiveness of large language models as automatic dialogue evaluators. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 38, No. 17, pp. 19515-19524).</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="DiscQuA documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Nikos Gkoumas.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

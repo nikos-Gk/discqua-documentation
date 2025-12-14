@@ -1,0 +1,14 @@
+discqua.turnTaking
+==================
+
+.. automodule:: discqua.turnTaking
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   balanced_participation
+   turn_taking_visualization

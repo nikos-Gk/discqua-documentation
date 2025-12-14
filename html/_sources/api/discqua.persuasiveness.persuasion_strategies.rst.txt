@@ -1,0 +1,13 @@
+discqua.persuasiveness.persuasion\_strategies
+=============================================
+
+.. automodule:: discqua.persuasiveness.persuasion_strategies
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      persuasion_strategy
+      persuassion_steategy
+   

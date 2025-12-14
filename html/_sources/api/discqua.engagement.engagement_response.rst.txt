@@ -1,0 +1,6 @@
+discqua.engagement.engagement\_response
+=======================================
+
+.. currentmodule:: discqua.engagement
+
+.. autofunction:: engagement_response

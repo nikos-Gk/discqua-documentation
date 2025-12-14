@@ -1,0 +1,15 @@
+discqua.diversity.ngram\_diversity
+==================================
+
+.. automodule:: discqua.diversity.ngram_diversity
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_metrics_allwords
+      get_metrics_contentwords
+      get_metrics_stopwords
+      ngramdiversity
+   

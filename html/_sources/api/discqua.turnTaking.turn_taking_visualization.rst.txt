@@ -1,0 +1,13 @@
+discqua.turnTaking.turn\_taking\_visualization
+==============================================
+
+.. automodule:: discqua.turnTaking.turn_taking_visualization
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      make_visualization
+      save_stdout_to_image
+   
